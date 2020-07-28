@@ -9,7 +9,20 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+          }
+          , {
+            path: 'activity-detail/:activityID',
+            loadChildren: () => import('../activity-detail/activity-detail.module').then(m => m.ActivityDetailPageModule)
+          }/*,
+          {
+            path: 'activity-video',
+            loadChildren: () => import('../activity-video/activity-video.module').then( m => m.ActivityVideoPageModule)
+          }*/
+        ]
       },
       {
         path: 'tab2',
